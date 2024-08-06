@@ -186,11 +186,6 @@ export function formatDuration(durationMs: number): string {
     return `${durationHours} hour${durationHours !== 1 ? 's' : ''} ${durationMinutes} minute${durationMinutes !== 1 ? 's' : ''} ${durationSeconds} second${durationSeconds !== 1 ? 's' : ''}`;
 }
 
-// Commented out as it's not used in the merged version
-// export function getTapMessage(tapCount: number): string {
-//     // ... (implementation as before)
-// }
-
 // Additional functions from the original version that might be useful
 export const fetchDepartments = async (): Promise<Department[]> => {
     try {
