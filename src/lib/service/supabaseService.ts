@@ -233,3 +233,31 @@ export const deleteUser = async (userId: number) => {
         throw error;
     }
 };
+
+export async function fetchUserCourseAlt(id: number): Promise<Course[]> {
+    try {
+        const { data, error } = await supabase.from('courses').select().eq('id', id);
+        if (error) {
+            console.error('Error fetching courses:', error);
+            return [];
+        }
+        return data || [];
+    } catch (error) {
+        console.error('Error fetching courses:', error);
+        return [];
+    }
+}
+
+export async function fetchUserDepartmentAlt(id: number): Promise<Department[]> {
+    try {
+        const { data, error } = await supabase.from('departments').select().eq('id', id);
+        if (error) {
+            console.error('Error fetching departments:', error);
+            return [];
+        }
+        return data || [];
+    } catch (error) {
+        console.error('Error fetching departments:', error);
+        return [];
+    }
+}

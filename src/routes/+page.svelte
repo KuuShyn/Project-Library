@@ -5,8 +5,10 @@
 		handleUserLogin,
 		fetchUsers,
 		fetchUserSessions,
-		fetchUserDepartment,
-		fetchUserCourse,
+		// fetchUserDepartment,
+		fetchUserDepartmentAlt,
+		// fetchUserCourse,
+		fetchUserCourseAlt,
 		formatDuration
 	} from '$lib/service/supabaseService';
 	import {
@@ -96,9 +98,9 @@
 		if (userLogin.success) {
 			const user = users.find((u) => u.rfid === rfid);
 			if (user) {
-				const course = (await fetchUserCourse(user.course_id))[0];
+				const course = (await fetchUserCourseAlt(user.course_id))[0];
 				const department = course
-					? (await fetchUserDepartment(course.department_id))[0]
+					? (await fetchUserDepartmentAlt(course.department_id))[0]
 					: undefined;
 				console.log('Fetched Course:', course);
 				console.log('Fetched Department:', department);
@@ -148,9 +150,9 @@
 		if (success) {
 			const currentUser = users.find((user) => user.rfid === rfid);
 			if (currentUser) {
-				const currentUserCourse = (await fetchUserCourse(currentUser.course_id))[0];
+				const currentUserCourse = (await fetchUserCourseAlt(currentUser.course_id))[0];
 				const currentUserDepartment = (
-					await fetchUserDepartment(currentUserCourse.department_id)
+					await fetchUserDepartmentAlt(currentUserCourse.department_id)
 				)[0];
 
 				// Determine if the user is logged in based on the latest session
